@@ -1,7 +1,8 @@
 import  { useState, useEffect } from 'react';
 import Logo from '../public/favicon.ico';
+import RadioButton from './FilterComponent/RadioButton/RadioButton'
 
-function fetchMain(){
+export default function  fetchMain(){
   const [subscriptions, setSubscriptions] = useState({});
   const [error, setError] = useState("");
 
@@ -20,7 +21,7 @@ function fetchMain(){
   }, []);
 
   return (
-    <main className="mainPage">
+    <main className="main-page">
       <nav className="main-header">
         <img src={Logo} alt="Tea Time Logo" className="App-logo"></img>
         <h1>Title: Tea Time</h1>
@@ -29,11 +30,11 @@ function fetchMain(){
       </nav>
 
       <nav className="filter-component">
-
+       <RadioButton />
       </nav>
 
       <nav className="subscription-container">
-        
+        <p>Subscriptions will go here.</p>
       </nav>
 
     </main>
