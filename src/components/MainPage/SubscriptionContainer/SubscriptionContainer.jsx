@@ -1,6 +1,6 @@
 import React, { useState } from 'react'; 
-import FilterBar from '../FilterComponent/FilterComponent';
-import SubscriptionCard from "./SubscriptionComponent/SubscriptionCard"; 
+import FilterComponent from '../FilterComponent/FilterComponent';
+import SubscriptionCard from "./SubscriptionCards/SubscriptionCard"; 
 import './SubscriptionContainer.css'
 export default function SubscriptionContainer({ subscriptions }) {
   const [activeOnly, setActiveOnly] = useState(false); 
@@ -15,7 +15,6 @@ export default function SubscriptionContainer({ subscriptions }) {
 
   return (
     <div className="subscription-container">
-      <FilterBar activeOnly={activeOnly} onCheckboxChange={handleCheckboxChange} />
       
       {filteredSubscriptions.length === 0 ? (
         <p>No subscriptions available</p>

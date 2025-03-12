@@ -1,16 +1,22 @@
 import './MainHeader.css'
-import Icon from './favicon.ico'
-import { useLocation } from 'react-router-dom'
+import Logo from '../../../assets/tea-box.png';
+// import { Link } from 'react-router-dom';  // Add Link import
+import { Routes, Route } from 'react-router-dom';
+// import App from "../../App/App"; 
 
-export default function HeaderContainer() {
-  const location = useLocation();
-
+export default function MainHeader() {
   return(
     <header>
-      <img src={Logo} alt="Tea Time Logo" className="app-logo" />
+      <button className='home-icon'>
+        {/* <Link to={"/"}>  */}
+          <img src={Logo} alt="Tea Time Logo" className="app-logo" />
+        {/* </Link> */}
+      </button>
       <h1>Tea Time</h1>
-      <h2>Welcome, Shop Owner!</h2>
-      <p>Select a subscription below to see more details.</p>
+
+      <Routes>
+
+      </Routes>
     </header>
   );
 }
