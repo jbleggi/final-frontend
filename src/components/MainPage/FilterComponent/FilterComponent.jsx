@@ -1,19 +1,21 @@
-// src/components/MainPage/FilterComponent/FilterComponent.jsx
-import SubscriptionCard from "../SubscriptionContainer/SubscriptionCards/SubscriptionCard";
-import SubscriptionContainer from "../SubscriptionContainer/SubscriptionContainer";
+import React from 'react';
 
-export default function FilterComponent({ activeOnly, onCheckboxChange }) {
+export default function FilterComponent( activeOnly, onActiveChange ) {
+  const handleCheckboxChange = (e) => {
+    onActiveChange(e.target.checked)
+  }
+
   return (
     <form>
       <label>
         <input 
           type="checkbox" 
           checked={activeOnly} 
-          onChange={onCheckboxChange} 
+          onChange={handleCheckboxChange}
         />
         {' '}
         Only active subscriptions
       </label>
     </form>
   );
-};
+}
