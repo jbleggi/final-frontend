@@ -11,7 +11,7 @@ export default function App() {
         <MainHeader />
 
         <h2>Welcome, Shop Owner!</h2>
-        <p>Select a subscription below to see more details.</p>
+        <h3>Select a subscription below to see more details.</h3>
         
         <SubscriptionContainer />
   
