@@ -38,11 +38,7 @@ export default function App() {
   return (
     <main className='app'>
       <div className='main-header'>
-        <img src={Logo} alt="Tea Time Logo" className="app-logo" />
-        <h1>Tea Time</h1>
-        <h2>Welcome, Shop Owner!</h2>
-        <p>Select a subscription below to see more details.</p>
-        
+
         <SubscriptionContainer
           subscriptions={filteredSubscriptions} // Pass filtered subscriptions
           activeOnly={activeOnly}

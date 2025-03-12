@@ -9,7 +9,7 @@ const SubscriptionCard = ({ id, cost, status }) => {
     <div className='subscription-card'>
       <h3>{id}</h3>
       <p>Cost: {cost}</p>
-      <p className={`status ${statusClass}`}>Status: {status}</p>
+      <p>Status: {status}</p>
     </div>
   );
 }
