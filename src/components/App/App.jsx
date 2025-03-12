@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import './App.css'
 import MainHeader from '../MainPage/MainHeader/MainHeader';
 import SubscriptionContainer from '../MainPage/SubscriptionContainer/SubscriptionContainer';
@@ -50,6 +51,12 @@ export default function App() {
           subscriptions={filteredSubscriptions}
           activeOnly={activeOnly}
         />
+
+        <Routes>
+          <Route path="/" element={<App />} />
+          {/* <Route path="/subscription/:id" element={<SubscriptionInfo />} /> */}
+          {/* <Route path="*" element={<NotFound />} /> */}
+        </Routes>
   
         <footer><a href="https://www.flaticon.com/free-icons/tea-bag" title="tea-bag icons">Tea-bag icon created by Freepik - Flaticon</a></footer>
         {error && <p className="error">{error}</p>}
