@@ -1,16 +1,17 @@
 .subscription-card {
   background-color: lightcoral;
   box-sizing: border-box;
-  /* border: 3px solid black; */
+  border: 3px solid black;
   border-radius: 20px;
   text-align: center;
   padding: 1em;
   margin: 1em;
+  color: white;
 }
 
-.subscription-card a {
-  color: inherit; 
-}
+/* .subscription-card a {
+  color: inherit;
+} */
 
 .subscription-card:hover {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 30px 0 rgba(0, 0, 0, 0.19);
