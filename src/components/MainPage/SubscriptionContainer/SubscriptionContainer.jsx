@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import FilterComponent from '../FilterComponent/FilterComponent';
 import SubscriptionCard from './SubscriptionCards/SubscriptionCard';
+import FilterComponent from '../FilterComponent/FilterComponent';
 import './SubscriptionContainer.css';
+
 
 export default function SubscriptionContainer( ) {
   const [subscriptions, setSubscriptions] = useState([]);
   const [activeOnly, setActiveOnly] = useState(false);
-  function onActiveChange () { setActiveOnly};
 
-  let filteredSubscriptions = [];
+  const handleActiveOnlyChange = (newState) => {
+    setActiveOnly(newState);
+  };
 
   useEffect(() => {
     fetch('http://localhost:3000/api/v1/subscriptions')
@@ -17,42 +19,42 @@ export default function SubscriptionContainer( ) {
         console.log("Subscription Data: ", data);
         setSubscriptions(data.subscriptions);
       })
-      .catch((error) => console.error("Error loading: ", error.message)); 
+      .catch((error) => console.error("Error loading subscriptions: ", error.message)); 
   }, []);
 
-  useEffect(() => {
-    console.log('Checkbox clicked:', activeOnly);
-  }, [activeOnly])
-
+  let filteredSubscriptionData 
   
-  //   if (activeOnly) {
-  //     filteredSubscriptions = subscriptions.filter(subscription => subscription.status === 'active');
-  //   } else {
-  //     filteredSubscriptions = subscriptions;
-  //   }
+  if (activeOnly){
+    filteredSubscriptionData = subscriptions.filter(subscription => subscription.status === "active")
+  } else {
+    filteredSubscriptionData = subscriptions
+  }
 
-  // let content;
-  //   if (filteredSubscriptions.length === 0) {
-  //     content = <p>No subscriptions available</p>;
-  //   } else {
-  //     content = filteredSubscriptions.map(subscription => (
-  //       <SubscriptionCard key={subscription.id} {...subscription} />
-  //     ));
-  //   }
-
-  subscriptions.forEach((subscription) => {
-    if (activeOnly && subscription.status === 'active') {filteredSubscriptions.push (
-      <SubscriptionCard key={subscription.id} {...subscription} />
-    )}
-    else if (!activeOnly) {filteredSubscriptions.push (
-      <SubscriptionCard key={subscription.id} {...subscription} />
-    )}
-  })
+  const subscriptionCards = filteredSubscriptionData.map(subscription => {
+    const cost = `$${parseFloat(subscription.cost).toFixed(2)}`;
+    return (
+      <SubscriptionCard
+        key={subscription.id}
+        id={subscription.id}
+        status={subscription.status}
+        cost={cost}
+      />
+    )
+  });
 
   return (
-    <div className="subscription-container">
-      <FilterComponent activeOnly={activeOnly} onActiveChange={onActiveChange} />
-      <SubscriptionCard />
-    </div>
+    <section>
+      <div className='filter-component'>
+        <FilterComponent 
+          activeOnly={activeOnly}
+          onActiveChange={handleActiveOnlyChange} 
+        />
+        <p>{activeOnly ? 'Showing only active subscriptions.' : 'Showing all subscriptions.'}</p>
+      </div>
+
+      <div className='subscription-container'>
+        {subscriptionCards}
+      </div>
+    </section>
   );
 }

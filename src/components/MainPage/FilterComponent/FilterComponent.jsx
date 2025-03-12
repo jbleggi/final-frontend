@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-export default function FilterComponent( activeOnly, onActiveChange ) {
+export default function FilterComponent({ onActiveChange }) {
+  const [activeOnly, setActiveOnly] = useState(false);
+
   const handleCheckboxChange = (e) => {
-    onActiveChange(e.target.checked)
-  }
+    const newState = e.target.checked;
+    setActiveOnly(newState);
+    onActiveChange(newState); 
+  };
 
   return (
     <form>

@@ -13,8 +13,6 @@ export default function App() {
         <h2>Welcome, Shop Owner!</h2>
         <p>Select a subscription below to see more details.</p>
         
-        <FilterComponent />
-
         <SubscriptionContainer />
   
         <footer><a href="https://www.flaticon.com/free-icons/tea-bag" title="tea-bag icons">Tea-bag icon created by Freepik - Flaticon</a></footer>
