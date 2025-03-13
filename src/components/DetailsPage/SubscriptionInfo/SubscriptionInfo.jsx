@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import DetailsHeader from '../DetailsHeader/DetailsHeader'
 import ItemCard from '../ItemsContainer/ItemCard/ItemCard';
+import EditSubscriptionStatus from './EditSubscriptionStatus/EditSubscriptionStatus';
 
 export default function SubscriptionInfo() {
   const { id } = useParams();
@@ -68,7 +69,11 @@ export default function SubscriptionInfo() {
         <h2>Subscription No. {attributes.id}</h2>
         <h2>Subscription Cost: ${cost}</h2>
         <h2>Subscription Status: {attributes.status}</h2>
-        <button>Edit Status</button>
+        
+        <EditSubscriptionStatus 
+          attributes={attributes}
+          setSubscriptionDetails={setSubscriptionDetails} 
+        />
 
         <h2>Items:</h2>
         <div className='items-container'>
