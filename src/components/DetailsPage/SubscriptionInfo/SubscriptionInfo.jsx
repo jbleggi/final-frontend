@@ -1,61 +1,83 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import DetailsHeader from '../DetailsHeader/DetailsHeader'
+import ItemCard from '../ItemsContainer/ItemCard/ItemCard';
 
-function SubscriptionInfo({ subscriptionId }) {
-  const [SubscriptionInfo, setSubscriptionInfo] = useState(null);
-  const [error, setError] = useState(null);
-  const navigate = useNavigate(); 
-
+export default function SubscriptionInfo() {
+  const { id } = useParams();
+  const [subscriptionDetails, setSubscriptionDetails] = useState(null);
 
   useEffect(() => {
-    if (subscriptionId) {
-      showSubscriptionInfo(subscriptionId);
-    };
+    if (id) {
+      console.log('Fetching subscription details for ID:', id); // Debug log to confirm ID
 
-    function showSubscriptionInfo(id) {
-      fetch(`https://localhost:3000/api/v1/subscriptions/${id}`)
+      fetch(`http://localhost:3000/api/v1/subscriptions/${id}`)
         .then(response => {
           if (!response.ok) {
+            console.error('Error at fetch: ', response.status)
             throw new Error('Subscription not found');
           }
           return response.json();
         })
+        // .then(data => console.log("Subscription Details: ", data))
+        // .then(data => setSubscriptionDetails(data))
         .then(data => {
-          console.log(data);
-          setSubscriptionInfo(data); 
-          setError(null);
+          console.log("Subscription Details: ", data);
+          if (data && data.data) {
+            console.log('Setting subscription details:', data); // Debug log
+            setSubscriptionDetails(data);
+          } else {
+            console.error('No subscription data found');
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error);
         });
     };
-    
-  }, [subscriptionId, navigate]);
+  }, [id]);
 
-
-  if (error) {
-    return <p className="subscription-detail-error">{error}</p>;
+  if (!subscriptionDetails) {
+    return(
+      <section className='details-page'>
+        <DetailsHeader />
+        <><p>Loading subscription details...</p></>
+      </section>
+      );
   }
 
-  if (!SubscriptionInfo || !SubscriptionInfo.genre_ids) { 
-    return <p className="SubscriptionInfo_genre">Loading movie genres...</p>;
-  }
+  const { attributes, relationships } = subscriptionDetails.data;
+  const cost = parseFloat(attributes.cost).toFixed(2);
 
-  const movieGenres = SubscriptionInfo.genre_ids.map(genre => (
-    <p className="SubscriptionInfo_genre" key={genre}>
-      {genre}
-    </p>
-  ));
+  const itemCards = relationships.items.data.map(item => {    
+    return(
+    <ItemCard
+      key={item.id}
+      id={item.id}
+      />
+    )
+  });
 
-  return (
-    <section className='SubscriptionInfo'>
-      <img className="SubscriptionInfo_image" src={SubscriptionInfo.backdrop_path} alt="Movie poster"/>
-      <div className="SubscriptionInfo_attributes">
-        <h2 className="SubscriptionInfo_title">{SubscriptionInfo.title}</h2>
-        <div className="SubscriptionInfo_genreList">
-          {movieGenres}
+  const customerInfo = relationships.customer.data.id
+
+
+  return(
+    <section className='details-page'>
+      <DetailsHeader />
+      <div className='subscription-info'>
+        
+        <h2>Subscription No. {attributes.id}</h2>
+        <h2>Subscription Cost: ${cost}</h2>
+        <h2>Subscription Status: {attributes.status}</h2>
+        <button>Edit Status</button>
+
+        <h2>Items:</h2>
+        <div className='items-container'>
+          {itemCards}
         </div>
-        <p className="SubscriptionInfo_overview">{SubscriptionInfo.overview}</p>
+
+        <h2>Customer ID:</h2>
+        <p>{customerInfo}</p>
       </div>
     </section>
   );
-};
-
-export default SubscriptionInfo;
+}

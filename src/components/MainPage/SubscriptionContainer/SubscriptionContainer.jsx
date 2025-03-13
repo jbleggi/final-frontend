@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import MainHeader from '../MainHeader/MainHeader';
 import SubscriptionCard from './SubscriptionCards/SubscriptionCard';
 import FilterComponent from '../FilterComponent/FilterComponent';
 import './SubscriptionContainer.css';
@@ -44,6 +45,10 @@ export default function SubscriptionContainer( ) {
 
   return (
     <section>
+      <MainHeader />
+      <h2>Welcome, Shop Owner!</h2>
+      <h3>Select a subscription below to see more details.</h3>
+      
       <div className='filter-component'>
         <FilterComponent 
           activeOnly={activeOnly}

@@ -1,22 +1,22 @@
 import './App.css'
+import { Routes, Route } from 'react-router-dom';
 import MainHeader from '../MainPage/MainHeader/MainHeader';
 import SubscriptionContainer from '../MainPage/SubscriptionContainer/SubscriptionContainer';
-import FilterComponent from '../MainPage/FilterComponent/FilterComponent';
+import SubscriptionInfo from '../DetailsPage/SubscriptionInfo/SubscriptionInfo';
 
 export default function App() {
- 
   return (
     <main className='app'>
-      <div className='main-page'>
-        <MainHeader />
+      <section className='main-page'>
 
-        <h2>Welcome, Shop Owner!</h2>
-        <h3>Select a subscription below to see more details.</h3>
-        
-        <SubscriptionContainer />
+
+        <Routes>
+          <Route path="/" element={<SubscriptionContainer />}/>
+          <Route path="/subscriptions/:id" element={<SubscriptionInfo />}/>
+        </Routes>
   
         <footer><a href="https://www.flaticon.com/free-icons/tea-bag" title="tea-bag icons">Tea-bag icon created by Freepik - Flaticon</a></footer>
-      </div> 
+      </section> 
     </main>
   );
 }
