@@ -44,11 +44,11 @@ const EditSubscriptionStatus = ({ attributes, setSubscriptionDetails }) => {
 
   return (
     <div>
-      <button onClick={handleEditStatusClick}>Edit Status</button>
+      <button className='button-edit' onClick={handleEditStatusClick}>Edit Status</button>
 
       {isModalOpen && (
         <div className="modal">
-          <div className="modal-content">
+          <div className="edit-content">
             <h3>Edit Subscription Status</h3>
             <label>
               <input
@@ -58,8 +58,8 @@ const EditSubscriptionStatus = ({ attributes, setSubscriptionDetails }) => {
               />
               Active
             </label>
-            <button onClick={handleSaveStatus}>Save</button>
-            <button onClick={closeModal}>Cancel</button>
+            <button className='button-save' onClick={handleSaveStatus}>Save</button>
+            <button className='button-cancel' onClick={closeModal}>Cancel</button>
           </div>
         </div>
       )}
