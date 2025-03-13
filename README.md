@@ -1,36 +1,30 @@
-# React + Vite
+# README
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules. This repo also includes Cypress and Router.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-
-
-What to include in the README?
-For your project READMEs, you should oragnize the information so that it is clear and easy to follow. It should be broken into sections to help the reader more easily understand and find information. Let’s break down what sections you should be including in your Mod 1 README.
+![Landing page](assets/landing.png)
 
 ## About
-Should be a brief summary of what is the application.
+This application is intended for use in conjunction with a backend API for administrators of a monthly mail order Tea Subscription Service. In this app, administrators are able to view all subscriptions in their database, filter active only subscriptions, select specific subscriptions to see more info, and edit the status of a particular subscription. 
+
 ## Built With
-Include the Ruby and RSpec version here.
+This was built using React v19.0.0, React Router v7.2.0 , Vite v6.2.1, and tested using Cypress v14.1.0, all on a MacOS with Google Chrome as the browser.
+
 ## Getting Started
-Breakdown the set-up instructions. Start with how to clone down the application and include all the steps necessary to run it locally.
-Not sure if you missed something? Ask a peer to follow your directions exactly to see if they can run the application.
+1. Use Terminal to select the intended directory for download.
+2. `git clone git@github.com:jbleggi/final-frontend.git`
+3. Open into the `final-frontend` directory 
+4. Run `npm i` and `npm run dev` in your Terminal to install dependencies and connect to the local server
+6. Navigate to `https://localhost:5173` on your preferred browser to view Tea Time!
+
 ## Testing
-Give directions for how to run your tests.
-Explain how your tests are organized.
-Provide a summary of the types of tests that you’ve written and why those tests are vaulable to the application.
+Cypress provides fast and reliable End-to-End testing, where the real-time interaction between the backend and frontend of an application is able to be inspected from a user standpoint.  
+
+To run Cypress tests: `npx cypress open`. This command should launch the Cypress Test Runner in Chrome. 
+
 ## Challenges & Wins
-Reflect on your process and what you have learned in the project.
-What were the challenges you experienced?
-How did you overcome them?
-How will this experience benefit you in future projects?
-## Authors (Optional)
-If you worked in a pair or group, give those partners recognition!
-Make their name a link to their GitHub Account.
+The frontend of this project proved more challenging than I anticipated. Due to family constraints I was unable to dedicate the amount of time that I would have liked to delve deeper into React.  
+
+That being said, I count this as a win. While it is decidedly not pretty, it *is* functional. I implemented a new feature, using a checkbox as a filter and edit tool. 
+
+I look forward to being able to revisit this project to polish and debug! 
+
+![Checkbox filter](assets/checkbox.png)
