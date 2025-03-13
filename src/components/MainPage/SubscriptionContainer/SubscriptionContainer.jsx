@@ -45,10 +45,11 @@ export default function SubscriptionContainer( ) {
 
   return (
     <section>
-      <MainHeader />
-      <h2>Welcome, Shop Owner!</h2>
-      <h3>Select a subscription below to see more details.</h3>
-      
+      <div className='main-welcome'>
+        <MainHeader />
+        <h2>Welcome, Shop Owner!</h2>
+        <h3>Select a subscription below to see more details.</h3>
+      </div>
       <div className='filter-component'>
         <FilterComponent 
           activeOnly={activeOnly}
