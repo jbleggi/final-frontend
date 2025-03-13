@@ -1,6 +1,6 @@
 # README
 
-![Landing page](assets/landing.png)
+![Landing page](/src/assets/landing.png)
 
 ## About
 This application is intended for use in conjunction with a backend API for administrators of a monthly mail order Tea Subscription Service. In this app, administrators are able to view all subscriptions in their database, filter active only subscriptions, select specific subscriptions to see more info, and edit the status of a particular subscription. 
@@ -27,4 +27,4 @@ That being said, I count this as a win. While it is decidedly not pretty, it *is
 
 I look forward to being able to revisit this project to polish and debug! 
 
-![Checkbox filter](assets/checkbox.png)
+![Checkbox filter](/src/assets/checkbox.png)
