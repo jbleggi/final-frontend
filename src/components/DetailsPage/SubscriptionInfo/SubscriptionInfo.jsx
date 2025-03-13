@@ -80,8 +80,10 @@ export default function SubscriptionInfo() {
           {itemCards}
         </div>
 
-        <h2>Customer ID:</h2>
-        <p>{customerInfo}</p>
+        <div className='customer-container'>
+          <h2>Customer ID:</h2>
+          <p>{customerInfo}</p>
+        </div>
       </div>
     </section>
   );
